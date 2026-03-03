@@ -18,7 +18,7 @@ function addChapter() {
   div.innerHTML = `
     <input placeholder="Chapter Title">
     <textarea placeholder="Write your chapter here..."></textarea>
-    <button onclick="this.parentElement.remove()">Delete</button>
+    <button onclick="this.parentElement.remove()">Delete Chapter</button>
   `;
 
   container.appendChild(div);
@@ -33,24 +33,27 @@ function calculateAnalytics() {
   document.querySelectorAll(".chapter textarea").forEach(textarea => {
     let text = textarea.value;
 
+    // Total words
     let words = text.trim().split(/\s+/).filter(Boolean);
     totalWords += words.length;
 
+    // Dialogue words
     let dialogue = text.match(/["“”](.*?)["“”]/g) || [];
     dialogueWords += dialogue.join(" ").split(/\s+/).filter(Boolean).length;
 
+    // POV counts
     let povMatches = text.match(/\[pov:(.*?)\]/g) || [];
     povMatches.forEach(m => {
       let name = m.replace("[pov:","").replace("]","");
       povCounts[name] = (povCounts[name]||0)+1;
     });
 
+    // Character mentions
     let charMatches = text.match(/@char\((.*?)\)/g) || [];
     charMatches.forEach(m => {
       let name = m.replace("@char(","").replace(")","");
       charCounts[name] = (charCounts[name]||0)+1;
     });
-
   });
 
   let dialoguePercent = totalWords
@@ -58,9 +61,13 @@ function calculateAnalytics() {
     : 0;
 
   document.getElementById("stats").innerHTML = `
-    <p><strong>Total Words:</strong> ${totalWords}</p>
-    <p><strong>Dialogue %:</strong> ${dialoguePercent}%</p>
-    <p><strong>POV Distribution:</strong> ${JSON.stringify(povCounts)}</p>
-    <p><strong>Character Mentions:</strong> ${JSON.stringify(charCounts)}</p>
+    <div class="chapter">
+      <h3>Total Words: ${totalWords}</h3>
+      <h3>Dialogue %: ${dialoguePercent}%</h3>
+      <h3>POV Distribution:</h3>
+      <pre>${JSON.stringify(povCounts, null, 2)}</pre>
+      <h3>Character Mentions:</h3>
+      <pre>${JSON.stringify(charCounts, null, 2)}</pre>
+    </div>
   `;
 }
