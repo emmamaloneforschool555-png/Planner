@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Of the Tides and Sky — Author OS</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,13 +22,13 @@
     <!-- DASHBOARD -->
     <div id="dashboard" class="tab active">
       <h2>Author Dashboard</h2>
-      <p>Welcome to your control center.</p>
+      <p>Welcome to your control center. Track your chapters, characters, POVs, and scenes all in one place.</p>
     </div>
 
     <!-- MANUSCRIPT -->
     <div id="manuscript" class="tab">
       <h2>Manuscript</h2>
-      <button onclick="addChapter()">➕ Add Chapter</button>
+      <button class="add-chapter-btn" onclick="addChapter()">➕ Add Chapter</button>
       <div id="chapters"></div>
     </div>
 
@@ -33,7 +36,7 @@
     <div id="analytics" class="tab">
       <h2>Analytics</h2>
       <div id="stats"></div>
-      <button onclick="calculateAnalytics()">Refresh Analytics</button>
+      <button class="refresh-btn" onclick="calculateAnalytics()">Refresh Analytics</button>
     </div>
 
   </div>
