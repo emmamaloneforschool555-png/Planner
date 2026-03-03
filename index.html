@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Of the Tides and Sky — Author OS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="sidebar">
+    <h1>🌊 Of the Tides and Sky</h1>
+    <button onclick="showTab('dashboard')">Dashboard</button>
+    <button onclick="showTab('manuscript')">Manuscript</button>
+    <button onclick="showTab('analytics')">Analytics</button>
+    <button onclick="toggleTheme()">Toggle Theme</button>
+  </div>
+
+  <div class="content">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="tab active">
+      <h2>Author Dashboard</h2>
+      <p>Welcome to your control center.</p>
+    </div>
+
+    <!-- MANUSCRIPT -->
+    <div id="manuscript" class="tab">
+      <h2>Manuscript</h2>
+      <button onclick="addChapter()">➕ Add Chapter</button>
+      <div id="chapters"></div>
+    </div>
+
+    <!-- ANALYTICS -->
+    <div id="analytics" class="tab">
+      <h2>Analytics</h2>
+      <div id="stats"></div>
+      <button onclick="calculateAnalytics()">Refresh Analytics</button>
+    </div>
+
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
